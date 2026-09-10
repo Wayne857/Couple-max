@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#fff9f2" />
+    <meta name="description" content="两个人一起生活的小屋：点菜、收藏菜谱和心愿清单。" />
+    <title>两小只 · 情侣生活小屋</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <main class="phone-shell" aria-label="两小只应用原型">
+      <header class="status-bar" aria-hidden="true">
+        <span id="statusTime">9:41</span>
+        <div class="status-icons">
+          <svg viewBox="0 0 20 14"><path d="M2 11h2V8H2v3Zm4 0h2V6H6v5Zm4 0h2V3h-2v8Zm4 0h2V1h-2v10Z"/></svg>
+          <svg viewBox="0 0 18 14"><path d="M1 5.6a11.5 11.5 0 0 1 16 0l-2 2a8.6 8.6 0 0 0-12 0l-2-2Zm4 4a5.7 5.7 0 0 1 8 0l-2 2a2.9 2.9 0 0 0-4 0l-2-2Zm4 3.7a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Z"/></svg>
+          <span class="battery"><span></span></span>
+        </div>
+      </header>
+
+      <section class="app-view active" data-view="home">
+        <div class="topbar">
+          <div>
+            <p class="eyebrow">我们的第 627 天</p>
+            <h1>晚上好，绵绵</h1>
+          </div>
+          <button class="avatar-pair" type="button" data-nav="us" aria-label="查看我们的资料">
+            <span class="avatar avatar-a">绵</span>
+            <span class="avatar avatar-b">舟</span>
+            <i></i>
+          </button>
+        </div>
+
+        <article class="home-card">
+          <div class="home-sky"><span>☁</span><span>✦</span><span>☾</span></div>
+          <div class="home-roof"></div>
+          <div class="home-body">
+            <span class="window window-left"><i></i></span>
+            <span class="door"><i></i></span>
+            <span class="window window-right"><i></i></span>
+          </div>
+          <div class="home-ground"></div>
+          <div class="home-copy">
+            <span class="live-dot"></span>
+            舟舟刚刚回到小屋
+          </div>
+        </article>
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">今晚吃什么</p>
+            <h2>给 TA 点个菜</h2>
+          </div>
+          <button class="text-button" type="button" data-action="open-order">点菜 <span>＋</span></button>
+        </div>
+
+        <div class="dish-scroll" id="dishList">
+          <button class="dish-card dish-main" type="button" data-dish="番茄牛腩面">
+            <img src="./assets/tomato-noodles.jpg" alt="一碗番茄牛腩面" />
+            <span class="dish-overlay"></span>
+            <span class="dish-label"><small>绵绵想吃</small>番茄牛腩面</span>
+            <span class="dish-time">今天 18:06</span>
+          </button>
+          <button class="dish-card dish-mini peach" type="button" data-dish="可乐鸡翅">
+            <span class="dish-emoji">🍗</span>
+            <span class="dish-label"><small>收藏菜单</small>可乐鸡翅</span>
+          </button>
+          <button class="dish-card dish-mini butter" type="button" data-dish="抹茶巴斯克">
+            <span class="dish-emoji">🍰</span>
+            <span class="dish-label"><small>周末想做</small>抹茶巴斯克</span>
+          </button>
+        </div>
+
+        <article class="request-card" id="requestCard">
+          <div class="request-avatar">绵</div>
+          <div class="request-copy">
+            <p><strong>绵绵</strong> 点了一道菜</p>
+            <h3 id="requestedDish">番茄牛腩面</h3>
+            <span>“想吃你做的～”</span>
+          </div>
+          <button type="button" data-action="accept-order">接单</button>
+        </article>
+
+        <div class="section-heading compact">
+          <div>
+            <p class="eyebrow">一起收集</p>
+            <h2>最近的小期待</h2>
+          </div>
+          <button class="icon-button" type="button" data-nav="wishlist" aria-label="查看全部心愿">
+            <svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+
+        <div class="wish-preview">
+          <span class="wish-icon blue">☕</span>
+          <div><strong>手冲咖啡壶</strong><small>舟舟收藏自淘宝 · ¥269</small></div>
+          <span class="heart-mark">♥</span>
+        </div>
+      </section>
+
+      <section class="app-view" data-view="recipes">
+        <div class="page-header">
+          <div><p class="eyebrow">一起做过 12 道菜</p><h1>我们的菜谱</h1></div>
+          <button class="round-button" type="button" data-action="open-recipe" aria-label="导入菜谱">＋</button>
+        </div>
+        <div class="search-box">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+          <input id="recipeSearch" type="search" placeholder="搜一道想吃的菜" aria-label="搜索菜谱" />
+        </div>
+        <div class="filter-row" role="group" aria-label="菜谱分类">
+          <button class="filter active" data-filter="all">全部</button>
+          <button class="filter" data-filter="dinner">晚餐</button>
+          <button class="filter" data-filter="dessert">甜点</button>
+          <button class="filter" data-filter="quick">快手菜</button>
+        </div>
+        <div class="recipe-grid" id="recipeGrid">
+          <article class="recipe-card" data-category="dinner" data-name="番茄牛腩面">
+            <div class="recipe-image photo"><img src="./assets/tomato-noodles.jpg" alt="番茄牛腩面" /><span>32 分钟</span></div>
+            <div class="recipe-info"><h3>番茄牛腩面</h3><p>酸甜浓郁 · 6 个步骤</p><div><span>小红书</span><button aria-label="收藏番茄牛腩面">♥</button></div></div>
+          </article>
+          <article class="recipe-card" data-category="quick" data-name="黄油虾仁滑蛋">
+            <div class="recipe-image shrimp"><span class="food-emoji">🍤</span><span>15 分钟</span></div>
+            <div class="recipe-info"><h3>黄油虾仁滑蛋</h3><p>嫩滑鲜香 · 4 个步骤</p><div><span>小红书</span><button aria-label="收藏黄油虾仁滑蛋">♥</button></div></div>
+          </article>
+          <article class="recipe-card" data-category="dessert" data-name="抹茶巴斯克">
+            <div class="recipe-image cake"><span class="food-emoji">🍵</span><span>50 分钟</span></div>
+            <div class="recipe-info"><h3>抹茶巴斯克</h3><p>周末甜点 · 7 个步骤</p><div><span>手动创建</span><button aria-label="收藏抹茶巴斯克">♥</button></div></div>
+          </article>
+          <button class="import-card" type="button" data-action="open-recipe">
+            <span>＋</span><strong>从小红书导入</strong><small>粘贴链接，自动整理步骤</small>
+          </button>
+        </div>
+      </section>
+
+      <section class="app-view" data-view="wishlist">
+        <div class="page-header">
+          <div><p class="eyebrow">我们想要的，慢慢实现</p><h1>心愿清单</h1></div>
+          <button class="round-button dark" type="button" data-action="open-wish" aria-label="添加心愿">＋</button>
+        </div>
+        <div class="wish-summary">
+          <div><span>共同心愿</span><strong id="wishCount">8</strong></div>
+          <div><span>已经实现</span><strong>3</strong></div>
+          <div class="mini-people"><span>绵</span><span>舟</span></div>
+        </div>
+        <div class="filter-row wish-filters">
+          <button class="filter active">全部</button><button class="filter">家居</button><button class="filter">礼物</button><button class="filter">旅行</button>
+        </div>
+        <div class="wishlist" id="wishlist">
+          <article class="wish-card">
+            <div class="product-image coffee">☕</div>
+            <div class="product-copy"><span class="source-pill">淘宝</span><h3>HARIO 手冲咖啡壶</h3><p>舟舟的心愿 · 想一起喝早咖啡</p><strong>¥269</strong></div>
+            <button class="wish-heart liked" aria-label="取消喜欢">♥</button>
+          </article>
+          <article class="wish-card">
+            <div class="product-image speaker">♫</div>
+            <div class="product-copy"><span class="source-pill">淘宝</span><h3>复古蓝牙音箱</h3><p>绵绵的心愿 · 客厅还缺一点音乐</p><strong>¥399</strong></div>
+            <button class="wish-heart liked" aria-label="取消喜欢">♥</button>
+          </article>
+          <article class="wish-card">
+            <div class="product-image travel">⛰</div>
+            <div class="product-copy"><span class="source-pill neutral">一起计划</span><h3>去大理住一周</h3><p>共同心愿 · 看风、晒太阳、逛菜市场</p><strong>2026 秋天</strong></div>
+            <button class="wish-heart liked" aria-label="取消喜欢">♥</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="app-view" data-view="us">
+        <div class="page-header"><div><p class="eyebrow">只属于我们</p><h1>我们的记录</h1></div><button class="round-button" type="button" aria-label="设置">•••</button></div>
+        <div class="couple-card">
+          <div class="couple-avatars"><span class="avatar avatar-a big">绵</span><i>♥</i><span class="avatar avatar-b big">舟</span></div>
+          <h2>绵绵 & 舟舟</h2><p>从 2025.01.27 开始相爱</p>
+          <div class="days"><strong>627</strong><span>在一起的日子</span></div>
+        </div>
+        <div class="memory-row">
+          <article><span>🍜</span><strong>12</strong><small>一起做过</small></article>
+          <article><span>🎁</span><strong>3</strong><small>实现心愿</small></article>
+          <article><span>📮</span><strong>18</strong><small>点菜成功</small></article>
+        </div>
+        <div class="settings-list">
+          <button><span>🏠</span><div><strong>布置我们的小屋</strong><small>换一个属于你们的样子</small></div><i>›</i></button>
+          <button><span>🔔</span><div><strong>双人提醒</strong><small>点菜和心愿动态</small></div><i>›</i></button>
+          <button><span>🔗</span><div><strong>邀请另一半</strong><small>邀请码 520627</small></div><i>›</i></button>
+        </div>
+      </section>
+
+      <nav class="bottom-nav" aria-label="主导航">
+        <button class="active" type="button" data-nav="home"><svg viewBox="0 0 24 24"><path d="m3 11 9-8 9 8v9a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1v-9Z"/></svg><span>小屋</span></button>
+        <button type="button" data-nav="recipes"><svg viewBox="0 0 24 24"><path d="M7 3v18M3 7h8M16 3v8M20 3v8M18 11v10"/></svg><span>菜谱</span></button>
+        <button type="button" data-nav="wishlist"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.7-7.5 1.1-1.1a5.5 5.5 0 0 0 0-7.8Z"/></svg><span>心愿</span></button>
+        <button type="button" data-nav="us"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>我们</span></button>
+      </nav>
+    </main>
+
+    <div class="sheet-backdrop" id="backdrop"></div>
+    <section class="bottom-sheet" id="orderSheet" role="dialog" aria-modal="true" aria-labelledby="orderTitle">
+      <div class="sheet-handle"></div><button class="sheet-close" data-action="close-sheet" aria-label="关闭">×</button>
+      <p class="eyebrow">今晚想吃</p><h2 id="orderTitle">给 TA 点个菜</h2>
+      <div class="quick-dishes">
+        <button data-pick="番茄牛腩面">🍜<span>番茄牛腩面</span></button>
+        <button data-pick="可乐鸡翅">🍗<span>可乐鸡翅</span></button>
+        <button data-pick="虾仁滑蛋">🍤<span>虾仁滑蛋</span></button>
+      </div>
+      <label class="field-label" for="customDish">或者，告诉 TA 你想吃什么</label>
+      <input class="large-input" id="customDish" placeholder="比如：热乎乎的火锅" maxlength="18" />
+      <label class="field-label" for="orderNote">留句话</label>
+      <input class="large-input" id="orderNote" value="想吃你做的～" maxlength="30" />
+      <button class="primary-button" type="button" data-action="submit-order">送出点菜单 <span>♥</span></button>
+    </section>
+
+    <section class="bottom-sheet" id="recipeSheet" role="dialog" aria-modal="true" aria-labelledby="recipeTitle">
+      <div class="sheet-handle"></div><button class="sheet-close" data-action="close-sheet" aria-label="关闭">×</button>
+      <div class="import-icon red">书</div><p class="eyebrow">从小红书收藏</p><h2 id="recipeTitle">粘贴菜谱链接</h2>
+      <p class="sheet-help">我们会帮你整理食材、用量和做菜步骤，原笔记链接也会保留。</p>
+      <label class="field-label" for="recipeUrl">小红书链接</label>
+      <div class="url-input"><input id="recipeUrl" placeholder="https://xhslink.com/…" /><button type="button" data-action="paste-demo" data-target="recipeUrl">粘贴</button></div>
+      <div class="parse-preview hidden" id="recipePreview"><span class="spinner"></span><div><strong>正在整理菜谱…</strong><small>识别食材和制作步骤</small></div></div>
+      <button class="primary-button red-button" type="button" data-action="parse-recipe">解析并收藏</button>
+      <p class="privacy-note">🔒 链接只用于提取这篇笔记的内容</p>
+    </section>
+
+    <section class="bottom-sheet" id="wishSheet" role="dialog" aria-modal="true" aria-labelledby="wishTitle">
+      <div class="sheet-handle"></div><button class="sheet-close" data-action="close-sheet" aria-label="关闭">×</button>
+      <div class="import-icon orange">淘</div><p class="eyebrow">从淘宝添加</p><h2 id="wishTitle">收藏一个小心愿</h2>
+      <p class="sheet-help">粘贴商品链接，会自动生成带图片、价格和来源的卡片。</p>
+      <label class="field-label" for="wishUrl">淘宝商品链接</label>
+      <div class="url-input"><input id="wishUrl" placeholder="https://m.tb.cn/…" /><button type="button" data-action="paste-demo" data-target="wishUrl">粘贴</button></div>
+      <label class="field-label" for="wishReason">为什么想要它？</label>
+      <input class="large-input" id="wishReason" placeholder="比如：想和你一起露营" />
+      <div class="parse-preview hidden" id="wishPreview"><span class="spinner"></span><div><strong>正在读取商品…</strong><small>识别名称、主图和价格</small></div></div>
+      <button class="primary-button orange-button" type="button" data-action="parse-wish">加入心愿清单</button>
+    </section>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"><span>♥</span><p></p></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
