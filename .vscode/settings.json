@@ -1,0 +1,8 @@
+{
+  "sweetpad.build.xcodeWorkspacePath": "CoupleMax.xcodeproj/project.xcworkspace",
+  "sweetpad.build.scheme": "CoupleMax",
+  "sweetpad.build.configuration": "Debug",
+  "sweetpad.build.derivedDataPath": ".sweetpad/DerivedData",
+  "sweetpad.build.autoGenerateBuildServerConfig": true,
+  "sweetpad.build.autoRestartSwiftLSP": true
+}
