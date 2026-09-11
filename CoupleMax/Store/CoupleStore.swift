@@ -11,6 +11,7 @@ final class CoupleStore: ObservableObject {
     private let defaults: UserDefaults
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
+    private let xiaohongshuParser = XiaohongshuParser()
 
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
@@ -38,17 +39,21 @@ final class CoupleStore: ObservableObject {
     }
 
     func importRecipe(from rawValue: String) async throws {
-        let url = try validatedURL(rawValue)
-        try await Task.sleep(for: .milliseconds(850))
+        let parsed = try await xiaohongshuParser.parse(rawValue)
+        let stepCount = max(parsed.steps.count, 1)
         let imported = Recipe(
-            title: "葱油拌面",
-            subtitle: "葱香浓郁",
-            durationMinutes: 12,
-            stepCount: 5,
-            category: "快手菜",
-            symbol: "takeoutbag.and.cup.and.straw.fill",
+            title: parsed.title,
+            subtitle: parsed.ingredients.isEmpty ? "来自小红书的收藏" : "已整理 \(parsed.ingredients.count) 种食材",
+            durationMinutes: min(max(stepCount * 5, 10), 90),
+            stepCount: stepCount,
+            category: "小红书",
+            symbol: "fork.knife",
             source: "小红书",
-            sourceURL: url.absoluteString
+            sourceURL: parsed.resolvedURL,
+            imageURL: parsed.imageURL,
+            ingredients: parsed.ingredients,
+            steps: parsed.steps,
+            rawText: parsed.text
         )
         recipes.insert(imported, at: 0)
         persist(recipes, key: "recipes")

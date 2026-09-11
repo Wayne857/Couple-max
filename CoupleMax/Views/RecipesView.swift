@@ -16,7 +16,10 @@ struct RecipesView: View {
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 14) {
                     ForEach(filteredRecipes) { recipe in
-                        RecipeCard(recipe: recipe)
+                        NavigationLink(value: recipe) {
+                            RecipeCard(recipe: recipe)
+                        }
+                        .buttonStyle(.plain)
                     }
                     Button { showingImport = true } label: {
                         VStack(spacing: 10) {
@@ -35,6 +38,7 @@ struct RecipesView: View {
             }
             .background(Color.couplePaper.ignoresSafeArea())
             .navigationTitle("我们的菜谱")
+            .navigationDestination(for: Recipe.self) { RecipeDetailView(recipe: $0) }
             .searchable(text: $search, prompt: "搜一道想吃的菜")
             .toolbar {
                 Button { showingImport = true } label: { Image(systemName: "plus") }
@@ -58,7 +62,17 @@ private struct RecipeCard: View {
         VStack(alignment: .leading, spacing: 10) {
             ZStack {
                 Color.couplePeach.opacity(0.55)
-                Image(systemName: recipe.symbol).font(.system(size: 42)).foregroundStyle(Color.coupleRose)
+                if let value = recipe.imageURL, let url = URL(string: value) {
+                    AsyncImage(url: url) { image in
+                        image.resizable().scaledToFill()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                } else {
+                    Image(systemName: recipe.symbol)
+                        .font(.system(size: 42))
+                        .foregroundStyle(Color.coupleRose)
+                }
                 Text("\(recipe.durationMinutes) 分钟")
                     .font(.caption2.bold()).foregroundStyle(.white)
                     .padding(7).background(.black.opacity(0.55)).clipShape(Capsule())
