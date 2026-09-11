@@ -99,3 +99,8 @@ struct HomeView: View {
         }
     }
 }
+
+#Preview("小屋首页") {
+    HomeView()
+        .environmentObject(CoupleStore())
+}
